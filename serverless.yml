@@ -1,0 +1,38 @@
+org: melitest
+app: meli
+service: meli
+frameworkVersion: "3"
+
+provider:
+  name: aws
+  versionFunctions: false
+  runtime: nodejs14.x
+  environment:
+    MONGODB_URI: ${param:MONGODB_URI}
+
+functions:
+  optionsHandler:
+    handler: src/handler.optionsHandler
+    events:
+      - httpApi:
+          path: /{proxy+}
+          method: options
+  mutant:
+    handler: src/handler.isMutant
+    events:
+      - httpApi:
+          path: /mutant
+          method: post
+  stats:
+    handler: src/handler.stats
+    events:
+      - httpApi:
+          path: /stats
+          method: get        
+plugins:
+  - serverless-plugin-typescript
+  - serverless-offline
+  - serverless-prune-plugin
+custom:
+  serverless-offline:
+    httpPort: 3001
