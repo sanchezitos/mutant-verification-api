@@ -7,9 +7,14 @@ Este proyecto proporciona una API para verificar si una secuencia de ADN corresp
 1. **Verificación de ADN (POST /mutant)**: 
    - Recibe un JSON con una secuencia de ADN y determina si la secuencia pertenece a un mutante o un humano.
    - Almacena la secuencia de ADN verificada en una base de datos para mantener un registro de las verificaciones.
+     
+POST - https://yaurpovhi0.execute-api.us-east-1.amazonaws.com/mutant
+  
 
 2. **Estadísticas de ADN (GET /stats)**: 
    - Proporciona estadísticas sobre las secuencias de ADN verificadas, incluyendo el número de secuencias mutantes y humanas, así como la relación entre ambas.
+     
+GET - https://yaurpovhi0.execute-api.us-east-1.amazonaws.com/stats
 
 ## Endpoints
 
@@ -57,4 +62,3 @@ npm install
 ```bash
 npm run serverless-offline
 ```
-# mutant-verification-api
